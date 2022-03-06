@@ -2,34 +2,10 @@ package br.com.dio.desafio.dominio;
 
 import java.time.LocalDate;
 
-public class Menitoria {
-    private String titulo;
-    private String descricao;
+public class Menitoria extends Conteudo{
     private LocalDate data;
 
     public Menitoria() {
-    }
-
-    public Menitoria(String titulo, String descricao, LocalDate data) {
-        this.titulo = titulo;
-        this.descricao = descricao;
-        this.data = data;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
     }
 
     public LocalDate getData() {
@@ -43,9 +19,14 @@ public class Menitoria {
     @Override
     public String toString() {
         return "{" +
-                "titulo='" + titulo + '\'' +
-                ", descricao='" + descricao + '\'' +
+                "titulo='" + super.getTitulo() + '\'' +
+                ", descricao='" + super.getDescricao() + '\'' +
                 ", data=" + data +
                 '}';
+    }
+
+    @Override
+    public double calcularXP() {
+        return XP_PADRAO+20;
     }
 }
