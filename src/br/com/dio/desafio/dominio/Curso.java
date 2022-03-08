@@ -2,8 +2,34 @@ package br.com.dio.desafio.dominio;
 
 public class Curso extends Conteudo{
     private int cargaHoraria;
+    private final NivelDificuldade dificuldade;
+    public Curso(NivelDificuldade dificuldade){
+        this.dificuldade = dificuldade;
+    }
 
-    public Curso(){}
+    @Override
+    public double calcularXP() {
+        switch(dificuldade.getNivelDificuldade()){
+            case 0 -> {
+                return XP_PADRAO*cargaHoraria + 10;
+            }
+            case 1 -> {
+                return XP_PADRAO*cargaHoraria + 20;
+            }
+            case 2 -> {
+                return XP_PADRAO*cargaHoraria + 30;
+            }
+            default -> {
+                System.out.println("Nivel indefinido");
+                return -1;
+            }
+        }
+    }
+
+    public NivelDificuldade getDificuldade() {
+        return dificuldade;
+    }
+
 
     public int getCargaHoraria() {
         return cargaHoraria;
@@ -15,15 +41,11 @@ public class Curso extends Conteudo{
 
     @Override
     public String toString() {
-        return "{" +
-                "titulo='" + super.getTitulo() + '\'' +
-                ", descricao='" + super.getDescricao() + '\'' +
-                ", cargaHoraria=" + cargaHoraria +
-                '}';
+        return "\nTítulo: " + super.getTitulo() +
+                "\nDescricao: " + super.getDescricao() +
+                "\nDificuldade: " + getDificuldade() +
+                "\nCargaHoraria: " + cargaHoraria;
     }
 
-    @Override
-    public double calcularXP() {
-        return XP_PADRAO*cargaHoraria;
-    }
+
 }

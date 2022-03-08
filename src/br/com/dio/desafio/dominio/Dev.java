@@ -15,6 +15,11 @@ public class Dev {
         bootcamp.getDevsInscritos().add(this);
     }
 
+    public void cancelarMatricula(Bootcamp bootcamp){
+        this.conteudosInscritos.clear();
+        bootcamp.getDevsInscritos().remove(this);
+    }
+
     public void progredir(){
         Optional<Conteudo> conteudo = this.conteudosInscritos.stream().findFirst();
         if(conteudo.isPresent()){
